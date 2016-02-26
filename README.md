@@ -12,7 +12,7 @@ Our wiki has the following functionalities:
 - [ ] List of pages
 - [ ] Ability to submit new pages
 - [ ] Ability to edit page
-- [ ] Documentation 
+- [ ] Documentation for major components (headers for each file with short descriptions - a few sentences)
 - [ ] Formatting
 - [ ] Search bar (Special feature!)
 - [ ] Tags (Special feature #2 - if we have time)
