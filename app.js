@@ -8,9 +8,11 @@
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
     var taskModel = require("./models/taskSchema.js");
+    var privdata = require("./config.js");
+    var routes = require("./routes/index.js");
     // configuration =================
 
-    mongoose.connect('_____db link here_____');     // connect to mongoDB database on localhost
+    mongoose.connect(privdata.mongodburl);     // connect to mongoDB database on localhost
 
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
@@ -21,69 +23,20 @@
 
     // routes
 
-    app.get('/api/tasks', function(req, res) {
-      taskModel.find(function(err, tasks) {
-        if (err)
-          res.send(err);
-        res.json(tasks);
-      });
-    });
+    app.get('/', routes.home);  // List of all shoe articles and search bar
 
-    app.post('/api/tasks', function(req, res) {
-        console.log("this", req.body);
-        taskModel.create({
-            text : req.body.text,
-            completed : false
-        }, function(err, todo) {
-            if (err)
-                res.send(err);
-            taskModel.find(function(err, tasks) {
-                if (err)
-                    res.send(err);
-                res.json(tasks);
-            });
-        });
-        // res.end(".")
-    });
+    app.get('/pages/:subj', routes.pageDisp);  // :task_id // A specific shoe article specified by the url after pages/
 
-    app.post('/api/tasks/:task_id', function(req, res) {
+    app.get('/pages/del', routes.delDisp);  // A page listing posts and an option to delete them
 
+    app.get('/search/:tags', routes.searchDisp);  // A list of shoe articles that have a specific tag or tags
 
-    app.delete('/api/tasks/:task_id', function(req, res) {
-      taskModel.update({
-        _id: req.params.task_id
-      }, {
-        completed: true
-      }, function(err, task) {
-        if (err) {res.send(err)};
-        taskModel.find(function(err, tasks) {
-          if (err) {res.send(err)};
-          res.json(tasks);
-        });
-      });
-    });
+    app.post('/pages/edit/:subj', routes.pageEdit);  // A post request that edits the page specified
 
-    app.get("*", function(req, res){
-      res.sendfile('./Views/main.html')
-    })
+    app.post('/pages/new/:subj', routes.pageNew);  // A post request that creates a new article
+
+    app.post('/pages/del', routes.pageDel);  // A post request that deletes an article
 
     // listen (start app with node server.js) ======================================
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
     console.log("App listening on port 3000");
-
-// !! Archives !! \\
-// // **Used to edit a specified object.**
-   //   console.log(req.params);
-   //   console.log(req.body.text);
-   //   taskModel.update({
-   //     _id: req.params.task_id
-   //   }, {
-   //     text: req.body.text
-   //   }, function(err, task) {
-   //     if (err) {res.send(err)};
-   //     taskModel.find(function(err, tasks) {
-   //       if (err) {res.send(err)};
-   //       res.json(tasks);
-   //     });
-   //   });
-   // });
