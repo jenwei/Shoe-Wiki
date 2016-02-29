@@ -14,11 +14,14 @@ function errorHandler(err, req, res, next) {
 }
 
 routes.home = function(req, res) {
+  console.log("at home");
   Post.find({}, function(err, posts) {
     if (err) {errorHandler()};
-    res.render("home", {posts: posts});
+    console.log(posts);
+    var args = {posts: posts};
+    res.render("home", args);
   });
-};
+  };
 
 routes.pageDisp = function(req, res) {
   var subj = req.params.subj;

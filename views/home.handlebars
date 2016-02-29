@@ -1,0 +1,60 @@
+<div class = 'container' ng-app='ShoeWikiApp' ng-controller='ShoeWikiController'>
+  <div id = 'title'>
+    <h1>Welcome!</h1>
+    <h3>Below are articles about different shoes: </h3>
+  </div>
+
+  <div class = 'list'>
+    <ul>
+      <div ng-repeat='obj in args.posts track by $index'>
+        <li>
+          <h4>HI</h4>
+          <a href="/pages/{{obj.url}}">{{obj.title}}</a>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <div class = 'container' ng-app="ShoeWikiApp" ng-controller="ShoeWikiController">
+  <div id="title">
+    <h2> You have <span id='emphasis'> {{tasks.length}} </span> tasks to complete! </h2>
+  </div>
+  <div>
+    <form  ng-submit="add()">
+      <input id='input' type="text" ng-model="task.text">
+    </form>
+  </div>
+  <div class="tasks">
+    <h3> Tasks to complete: </h3>
+      <ul>
+        <li ng-repeat="t in tasks track by $index">
+          <div ng-hide="editorEnabled">
+            {{t.text}}
+            <a href="#" ng-click="editorEnabled=!editorEnabled">Edit title</a>
+            <a href="#" ng-click="complete()">X</a>
+          </div>
+          <div ng-show="editorEnabled">
+            <input ng-model="t.text">
+            <a href="#" ng-click="editorEnabled=!editorEnabled; edit()">Done editing?</a>
+          </div>
+      </ul>
+  </div>
+  <div class='tasks'>
+    <h3> Completed Tasks: </h3>
+      <ul id="completed">
+        <li ng-repeat="t in completed track by $index">
+            {{t.text}}
+        </li>
+      </ul>
+  </div>
+</div>
+ -->

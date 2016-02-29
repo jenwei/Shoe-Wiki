@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var postSchema = mongoose.Schema({
   title: String,
-  url: String
+  url: String,
   body: String,
   timestamp: Date,
   author: String,
