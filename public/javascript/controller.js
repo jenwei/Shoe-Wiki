@@ -1,6 +1,6 @@
 angular.module('ShoeWikiApp', [])
   .controller('ShoeWikiController', function($scope, $http){
-
+  	$scope.shoes = []
   })
 
 

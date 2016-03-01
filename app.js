@@ -32,20 +32,20 @@
     app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
     app.use(methodOverride());
 
-    // routes =========================
-    app.get('/', routes.home);  // List of all shoe articles and search bar
+    // // routes =========================
+    // app.get('/', routes.home);  // List of all shoe articles and search bar
 
-    app.get('/pages/:subj', routes.pageDisp);  // :task_id // A specific shoe article specified by the url after pages/
+    // app.get('/pages/:subj', routes.pageDisp);  // :task_id // A specific shoe article specified by the url after pages/
 
-    app.get('/pages/del', routes.delDisp);  // A page listing posts and an option to delete them
+    // app.get('/pages/del', routes.delDisp);  // A page listing posts and an option to delete them
 
-    app.get('/search/:tags', routes.searchDisp);  // A list of shoe articles that have a specific tag or tags
+    // app.get('/search/:tags', routes.searchDisp);  // A list of shoe articles that have a specific tag or tags
 
-    app.post('/pages/edit/:subj', routes.pageEdit);  // A post request that edits the page specified
+    // app.post('/pages/edit/:subj', routes.pageEdit);  // A post request that edits the page specified
 
-    app.post('/pages/new/:subj', routes.pageNew);  // A post request that creates a new article
+    // app.post('/pages/new/:subj', routes.pageNew);  // A post request that creates a new article
 
-    app.post('/pages/del', routes.pageDel);  // A post request that deletes an article
+    // app.post('/pages/del', routes.pageDel);  // A post request that deletes an article
 
     // listen (start app with node server.js) ======================================
     app.listen(process.env.PORT || 3000);

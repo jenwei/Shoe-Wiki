@@ -3,12 +3,11 @@
     <h1>Welcome!</h1>
     <h3>Below are articles about different shoes: </h3>
   </div>
-
+  <h1>{{args}}</h1>
   <div class = 'list'>
     <ul>
       <div ng-repeat='obj in args.posts track by $index'>
         <li>
-          <h4>HI</h4>
           <a href="/pages/{{obj.url}}">{{obj.title}}</a>
         </li>
       </div>
