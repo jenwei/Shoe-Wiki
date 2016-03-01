@@ -1,16 +1,10 @@
 <div>
-	<h1>Home Page</h1>
-</div>
-
-<!-- <div class = 'container' ng-app='ShoeWikiApp' ng-controller='ShoeWikiController'>
-  <div id = 'title'>
     <h1>Welcome!</h1>
     <h3>Below are articles about different shoes: </h3>
   </div>
-  <h1>{{args}}</h1>
   <div class = 'list'>
     <ul>
-      <div ng-repeat='obj in args.posts track by $index'>
+      <div ng-repeat='obj in posts track by $index'> <!--looks at the index as opposed to content-->
         <li>
           <a href="/pages/{{obj.url}}">{{obj.title}}</a>
         </li>
@@ -18,7 +12,6 @@
     </ul>
   </div>
 </div>
- -->
 
 <!-- <div class = 'container' ng-app="ShoeWikiApp" ng-controller="ShoeWikiController">
   <div id="title">

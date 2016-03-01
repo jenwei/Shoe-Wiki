@@ -18,8 +18,7 @@ routes.home = function(req, res) {
   Post.find({}, function(err, posts) {
     if (err) {errorHandler()};
     console.log(posts);
-    var args = {posts: posts};
-    res.render("home", args);
+    res.json(posts);
   });
   };
 

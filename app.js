@@ -20,9 +20,10 @@
     mongoose.connect(privdata.mongodburl);     // connect to mongoDB database on localhost
     // mongoose.connect('mongodb://localhost/test');
 
-    app.engine('handlebars', exphbs ({defaultLayout: 'main', extname: '.handlebars'}));
-    app.set('view engine', 'handlebars');
-    app.set('views', path.join(__dirname, '/views'));
+    
+    // app.engine('handlebars', exphbs ({defaultLayout: 'main', extname: '.handlebars'}));
+    // app.set('view engine', 'handlebars');
+    // app.set('views', path.join(__dirname, '/views'));
 
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));                 // set the static files location /public/img will be /img for users
@@ -33,19 +34,19 @@
     app.use(methodOverride());
 
     // // routes =========================
-    // app.get('/', routes.home);  // List of all shoe articles and search bar
+    app.get('/api/posts', routes.home);  // List of all shoe articles and search bar
 
-    // app.get('/pages/:subj', routes.pageDisp);  // :task_id // A specific shoe article specified by the url after pages/
+    // clientside app.get('/api/pages/:subj', routes.pageDisp);  // :task_id // A specific shoe article specified by the url after pages/
 
-    // app.get('/pages/del', routes.delDisp);  // A page listing posts and an option to delete them
+    // clientside app.get('/api/pages/del', routes.delDisp);  // A page listing posts and an option to delete them
 
-    // app.get('/search/:tags', routes.searchDisp);  // A list of shoe articles that have a specific tag or tags
+    // clientside app.get('/api/search/:tags', routes.searchDisp);  // A list of shoe articles that have a specific tag or tags
 
-    // app.post('/pages/edit/:subj', routes.pageEdit);  // A post request that edits the page specified
+    app.post('/api/pages/edit/:subj', routes.pageEdit);  // A post request that edits the page specified
 
-    // app.post('/pages/new/:subj', routes.pageNew);  // A post request that creates a new article
+    app.post('/api/pages/new/:subj', routes.pageNew);  // A post request that creates a new article
 
-    // app.post('/pages/del', routes.pageDel);  // A post request that deletes an article
+    app.post('/api/pages/del', routes.pageDel);  // A post request that deletes an article
 
     // listen (start app with node server.js) ======================================
     app.listen(process.env.PORT || 3000);
