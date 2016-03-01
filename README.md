@@ -8,9 +8,9 @@ Shoe Wiki is a wiki page created for Lab 1 of OlinJS Spring 2016 by [Charlie Mou
 
 
 Our wiki has the following functionalities:
-- [ ] Topic pages with a title and content
+- [ ] Topic pages with a title and content (Charlie)
 - [ ] List of pages
-- [ ] Ability to submit new pages
+- [ ] Ability to submit new pages (Charlie)
 - [ ] Ability to edit page
 - [ ] Documentation for major components (headers for each file with short descriptions - a few sentences)
 - [ ] Formatting
@@ -20,3 +20,4 @@ Our wiki has the following functionalities:
 Progress so far:
 - [x] Set up 'Post' schema
 - [x] Planned out 'Routes'
+- [x] Set up Angular
