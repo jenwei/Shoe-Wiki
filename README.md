@@ -14,7 +14,7 @@ Our wiki has the following functionalities:
 - [x] Ability to edit page
 - [ ] Documentation for major components (headers for each file with short descriptions - a few sentences)
 - [ ] Formatting
-- [ ] Search bar (Special feature!)
+- [x] Search bar (Special feature!)
 - [ ] Tags (Special feature #2 - if we have time)
 - [ ] Post to Heroku
 
