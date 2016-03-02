@@ -4,16 +4,15 @@
   </div>
   <div class = 'list'>
     <ul>
-      <div ng-repeat='obj in posts track by $index'> <!--looks at the index as opposed to content-->
+    	<!--looks at the index as opposed to content-->
+      <div ng-repeat='obj in posts track by $index'> 
         <li>
-          <a href="#/pages/{{obj.url}}">{{obj.title}}</a>
+          <a href="/pages/{{obj.url}}">{{obj.title}}</a>
         </li>
       </div>
     </ul>
   </div>
 </div>
-
-  <h3><a href="#/new"> Make your own! </a></h3>
 
 <!-- <div class = 'container' ng-app="ShoeWikiApp" ng-controller="ShoeWikiController">
   <div id="title">
