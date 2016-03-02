@@ -1,8 +1,11 @@
 /*
-angular routes 
+angular routes
 */
 
-var ShoeWiki = angular.module('ShoeWikiApp', ['ngRoute']);
+var ShoeWiki = angular.module('ShoeWikiApp', ['ngRoute'])
+	.run(function($rootScope) {
+		$rootScope.posts = [];
+	});
 
 // angular.module('ShoeWikiApp', [])
 //   .controller('ShoeWikiController', function($scope, $http){
@@ -16,20 +19,64 @@ ShoeWiki.config(function($routeProvider) {
 			templateUrl: '/html/home.html',
 			controller: 'mainController'
 		})
+		.when('/pages/:subj', {
+			templateUrl: '/html/pages.html',
+			controller: 'pageController'
+		})
+		.when('/new', {
+			templateUrl: '/html/new.html',
+			controller: 'newController'
+		})
+		.when('/search/:tags', {
+			templateUrl: '/html/search.html',
+			controller: 'searchController'
+		})
 });
 
-ShoeWiki.controller('mainController', function($scope, $http) {
+ShoeWiki.controller('mainController', function($scope, $rootScope, $http) {
     // create a message to display in our view
-    $scope.posts = [];
+		$rootScope.posts = [];
 
     $http.get('/api/posts')
 	    .success(function(data) {
-	    	$scope.posts = data;
-	   		console.log($scope.posts);
+	    	$rootScope.posts = data;
+				// 		console.log($scope.posts);
 		})
 		.error(function(data) {
 		    console.log('Error: ' + data);
 		});
+});
+
+ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams, $http) {
+    // create a message to display in our view
+		console.log("Now within pages Controller");
+    var subj = $routeParams.subj;
+		$scope.nothingWrong = true;
+		console.log(subj);
+		$rootScope.posts.forEach(function(element, index, array) {
+			if (element.url === subj){
+				$scope.post = element;
+			};
+		});
+		if ($scope.post === undefined) {$scope.nothingWrong = false};
+});
+
+ShoeWiki.controller('newController', function($scope, $rootScope, $http) {
+    // create a message to display in our view
+    $http.get('/api/new')
+	    .success(function(data) {
+
+		})
+		.error(function(data) {
+		    console.log('Error: ' + data);
+		});
+});
+
+ShoeWiki.controller('searchController', function($scope, $rootScope, $routeParams, $http) {
+    // create a message to display in our view
+    var tags = $routeParams.tags.split("+")
+		console.log(tags);
+
 });
 
 // angular.module('ShoeWikiApp', [])
