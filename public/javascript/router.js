@@ -4,7 +4,6 @@ angular routes
 
 var ShoeWiki = angular.module('ShoeWikiApp', ['ngRoute'])
 	.run(function($rootScope) {
-		$rootScope.posts = [];
 	});
 
 // angular.module('ShoeWikiApp', [])
@@ -35,8 +34,6 @@ ShoeWiki.config(function($routeProvider) {
 
 ShoeWiki.controller('mainController', function($scope, $rootScope, $http) {
     // create a message to display in our view
-		$rootScope.posts = [];
-
     $http.get('/api/posts')
 	    .success(function(data) {
 	    	$rootScope.posts = data;
