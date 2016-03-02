@@ -47,7 +47,7 @@ ShoeWiki.controller('mainController', function($scope, $rootScope, $http) {
 ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams, $http) {
     // create a message to display in our view
 		console.log("Now within pages Controller");
-    var subj = $routeParams.subj;
+    var subj = $routeParams.subj; // grabs subj after colon in url
 		$scope.nothingWrong = true;
 		console.log(subj);
 		$rootScope.posts.forEach(function(element, index, array) {
@@ -55,14 +55,14 @@ ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams,
 				$scope.post = element;
 			};
 		});
-		if ($scope.post === undefined) {$scope.nothingWrong = false};
+		if ($scope.post === undefined) {$scope.nothingWrong = false}; // if no element gets passed in, raise error flag to show error message 
 });
 
 ShoeWiki.controller('newController', function($scope, $rootScope, $http, $location) {
     // create a message to display in our view
     $scope.new = function(){
 			console.log($scope.newPost);
-			$scope.newPost.tags = $scope.newPost.tags.split(" ")
+			$scope.newPost.tags = $scope.newPost.tags.split(" ") // splitting space-spaced tags
 			$scope.newPost.imagesource = "";
 			$http.post('/api/new',$scope.newPost)
 		    .success(function(data) {
