@@ -48,6 +48,22 @@ ShoeWiki.controller('mainController', function($scope, $rootScope, $http) {
 		});
 });
 
+ShoeWiki.filter("searchFor", function(){
+	return function(array, searchString){
+		if (!searchString){
+			return array;
+		}
+		var result = [];
+		searchString = searchString.toLowerCase();
+		array.forEach(function (element, index, array){
+			if (element.title.toLowerCase().indexOf(searchString) !== -1) {
+				result.push(element);
+			};
+		});
+		return result;
+	};
+});
+
 ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams, $http) {
     // create a message to display in our view
 		console.log("Now within pages Controller");
