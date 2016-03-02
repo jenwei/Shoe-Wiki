@@ -30,6 +30,10 @@ ShoeWiki.config(function($routeProvider) {
 			templateUrl: '/html/search.html',
 			controller: 'searchController'
 		})
+		.when('/delete', {
+			templateUrl: '/html/delete.html',
+			controller: 'deleteController'
+		})
 });
 
 ShoeWiki.controller('mainController', function($scope, $rootScope, $http) {
@@ -55,7 +59,32 @@ ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams,
 				$scope.post = element;
 			};
 		});
-		if ($scope.post === undefined) {$scope.nothingWrong = false}; // if no element gets passed in, raise error flag to show error message 
+		if ($scope.post === undefined) {$scope.nothingWrong = false}; // if no element gets passed in, raise error flag to show error
+
+		$scope.edit = function() {
+			// update post with edits
+			$scope.post.title = $scope.editedPost.title;
+			$scope.post.body = $scope.editedPost.body;
+			$scope.post.author = $scope.editedPost.author;
+
+			$http.post('/api/pages/',$scope.post)
+				.success(function(data) {
+					$scope.post.timestamp = data.timestamp;
+					console.log(data);
+			})
+			.error(function(data) {
+					console.log('Error: ' + data);
+			});
+		}
+
+		$scope.autofiller = function() {
+			// fills editedPost with post content
+			$scope.editedPost = {};
+			$scope.editedPost.title = $scope.post.title;
+			$scope.editedPost.body = $scope.post.body;
+			$scope.editedPost.author = $scope.post.author;
+		}
+
 });
 
 ShoeWiki.controller('newController', function($scope, $rootScope, $http, $location) {
@@ -79,7 +108,18 @@ ShoeWiki.controller('searchController', function($scope, $rootScope, $routeParam
     // create a message to display in our view
     var tags = $routeParams.tags.split("+")
 		console.log(tags);
+});
 
+ShoeWiki.controller('deleteController', function($scope, $rootScope, $http) {
+	$scope.delete = function(url) {
+		$http.post('/api/delete/'+url)
+			.success(function(data) {
+				$rootScope.posts = data;
+		})
+		.error(function(data) {
+				console.log('Error: ' + data);
+		});
+	}
 });
 
 // angular.module('ShoeWikiApp', [])

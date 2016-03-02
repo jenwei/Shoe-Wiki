@@ -1,12 +1,19 @@
 <div ng-show="nothingWrong">
-
-  <h2> {{post.title}} </h2>
-
-  <h4> {{post.body}} </h4>
-
-  <h6> Last edited by {{post.author}} at {{post.timestamp}} </h6>
-
-  <a href="#/"> Return home </a>
+  <div ng-hide="editorEnabled">
+    <h2> {{post.title}} </h2>
+    <h4> {{post.body}} </h4>
+    <h6> Last edited by {{post.author}} at {{post.timestamp}} </h6>
+    <a href="#/"> Return home </a>
+    <a ng-click="editorEnabled=!editorEnabled; autofiller()">Edit post</a>
+  </div>
+  <div ng-show="editorEnabled">
+    <!-- Loads content into inputs -->
+    <input ng-model="editedPost.title", value="editedPost.title"> <br/>
+    <textarea cols="50" rows="10" ng-model="editedPost.body", value="editedPost.body"/> <br/>
+    <input ng-model="editedPost.author", value="editedPost.author"> <br/>
+    <button ng-click="editorEnabled=!editorEnabled; edit()">Save</button>
+    <button ng-click="editorEnabled=!editorEnabled">Cancel</button>
+  </div>
 </div>
 
 

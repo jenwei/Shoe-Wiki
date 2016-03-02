@@ -42,11 +42,11 @@
 
     // clientside app.get('/api/search/:tags', routes.searchDisp);  // A list of shoe articles that have a specific tag or tags
 
-    app.post('/api/pages/edit/:subj', routes.pageEdit);  // A post request that edits the page specified
+    app.post('/api/pages', routes.pageEdit);  // A post request that edits the page specified
 
     app.post('/api/new', routes.pageNew);  // A post request that creates a new article
 
-    app.post('/api/pages/del', routes.pageDel);  // A post request that deletes an article
+    app.post('/api/delete/:url', routes.pageDel);  // A post request that deletes an article
 
     // listen (start app with node server.js) ======================================
     app.listen(process.env.PORT || 3000);

@@ -5,11 +5,11 @@
   <div class = 'list'>
     <ul>
       <!--looks at the index as opposed to content-->
-      <div ng-repeat='obj in posts track by $index'> 
-        <li>
-          <a href="/pages/{{obj.url}}">{{obj.title}}</a>
-          <button ng-click="delPost()">x</button>
-        </li>
+      <div ng-repeat='obj in posts track by $index'>
+          <li>
+            <a href="/pages/{{obj.url}}">{{obj.title}}</a>
+            <button ng-click="delete(obj.url)">x</button>
+          </li>
       </div>
     </ul>
   </div>

@@ -22,22 +22,14 @@ routes.home = function(req, res) {
   });
   };
 
-routes.pageDisp = function(req, res) {
-  var subj = req.params.subj;
-  // console.log(subj);
-  Post.findOne({"url":subj}, function(err, post) {
-    if (err) {errorHandler()};
-    res.render("pageDisp",{post:post});
-  });
-};
-
-routes.delDisp = function(req, res) {
-  Post.find({}, function(err, posts) {
-    if (err) {errorHandler()};
-    console.log(posts);
-    res.render("delDisp", {posts: posts});
-  });
-};
+// routes.pageDisp = function(req, res) {
+//   var subj = req.params.subj;
+//   // console.log(subj);
+//   Post.findOne({"url":subj}, function(err, post) {
+//     if (err) {errorHandler()};
+//     res.render("pageDisp",{post:post});
+//   });
+// };
 
 routes.searchDisp = function(req, res) {
   var tags = req.params.tags.split
@@ -48,19 +40,21 @@ routes.searchDisp = function(req, res) {
 };
 
 routes.pageEdit = function(req, res) {
-  var subj = req.params.subj;
-  console.log(subj);
-  console.log(req.body.title);
-  Post.update({url:subj},{
+  Post.update({url:req.body.url},{
     body:req.body.body,
     title:req.body.title,
     author:req.body.author,
     tags: req.body.tags,
-    imagesource: req.body.imagesource
-  }, function(err, updatedPost) {
+    imagesource: req.body.imagesource,
+    timestamp: Date()
+  }, function(err, numAffected) {
     if (err) {errorHandler()};
-    res.json(updatedPost);
-  });
+    Post.findOne({url:req.body.url}, function(err, updatedPost) {
+      if (err) {errorHandler()};
+      res.json(updatedPost);
+    })
+  }
+  )
 };
 
 routes.pageNew = function(req, res) {
@@ -82,11 +76,14 @@ routes.pageNew = function(req, res) {
 };
 
 routes.pageDel = function(req, res) {
-  var subj = req.params.subj;
-  Post.findOneandRemove({'url':subj}, function(err, delPost) {
+  var url = req.params.url;
+  console.log(url);
+  Post.findOneAndRemove({"url":url}, function(err, deletedPost) {
     if (err) {errorHandler()};
-    res.status(200).end();
-  })
+    Post.find({}, function(err, posts) {
+      res.json(posts);
+    })
+  });
 };
 
 
