@@ -61,15 +61,21 @@ ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams,
 		if ($scope.post === undefined) {$scope.nothingWrong = false};
 });
 
-ShoeWiki.controller('newController', function($scope, $rootScope, $http) {
+ShoeWiki.controller('newController', function($scope, $rootScope, $http, $location) {
     // create a message to display in our view
-    $http.get('/api/new')
-	    .success(function(data) {
-
-		})
-		.error(function(data) {
-		    console.log('Error: ' + data);
-		});
+    $scope.new = function(){
+			console.log($scope.newPost);
+			$scope.newPost.tags = $scope.newPost.tags.split(" ")
+			$scope.newPost.imagesource = "";
+			$http.post('/api/new',$scope.newPost)
+		    .success(function(data) {
+					console.log(data);
+					$location.path('/');
+			})
+			.error(function(data) {
+			    console.log('Error: ' + data);
+			});
+		}
 });
 
 ShoeWiki.controller('searchController', function($scope, $rootScope, $routeParams, $http) {

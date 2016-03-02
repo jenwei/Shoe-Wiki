@@ -17,14 +17,14 @@ routes.home = function(req, res) {
   console.log("at home");
   Post.find({}, function(err, posts) {
     if (err) {errorHandler()};
-    console.log(posts);
+    // console.log(posts);
     res.json(posts);
   });
   };
 
 routes.pageDisp = function(req, res) {
   var subj = req.params.subj;
-  console.log(subj);
+  // console.log(subj);
   Post.findOne({"url":subj}, function(err, post) {
     if (err) {errorHandler()};
     res.render("pageDisp",{post:post});
@@ -64,11 +64,11 @@ routes.pageEdit = function(req, res) {
 };
 
 routes.pageNew = function(req, res) {
-  var subj = req.params.subj;
-  console.log(subj);
-  console.log(req.body.title);
+  // var subj = req.params.subj;
+  // console.log(subj);
+  console.log("making new page called ", req.body.title);
   Post.create({
-    url: subj,
+    url: req.body.url,
     timestamp: Date(),
     body:req.body.body,
     title:req.body.title,

@@ -44,7 +44,7 @@
 
     app.post('/api/pages/edit/:subj', routes.pageEdit);  // A post request that edits the page specified
 
-    app.post('/api/pages/new', routes.pageNew);  // A post request that creates a new article
+    app.post('/api/new', routes.pageNew);  // A post request that creates a new article
 
     app.post('/api/pages/del', routes.pageDel);  // A post request that deletes an article
 

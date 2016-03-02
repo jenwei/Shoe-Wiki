@@ -1,0 +1,16 @@
+<h2> Create a new Page </h2>
+
+<div>
+  <form id="new" ng-submit="new() ">
+    Title :<input id="newTitle" type="text" ng-model="newPost.title">
+    Custom URL :<input id="newUrl" type="text" ng-model="newPost.url" value="/">
+    <br/>
+    <input id="newBody" type="text" ng-model="newPost.body">
+    </br>
+    Author :<input id="newAuthor" type="text" ng-model="newPost.author">
+    Tags :<input id="newTags" type="text" ng-model="newPost.tags" placeholder="Separate by spaces">
+    <input type="submit" value="Create">
+  </form>
+<div>
+
+<a href="#/"> Return home </a>
