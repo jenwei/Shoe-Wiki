@@ -49,19 +49,23 @@ ShoeWiki.controller('mainController', function($scope, $rootScope, $http) {
 });
 
 ShoeWiki.filter("searchFor", function(){
-	return function(array, searchString){
-		if (!searchString){
-			return array;
-		}
-		var result = [];
-		searchString = searchString.toLowerCase();
-		array.forEach(function (element, index, array){
-			if (element.title.toLowerCase().indexOf(searchString) !== -1) {
-				result.push(element);
-			};
-		});
-		return result;
-	};
+	// searches for text in title or tags (single search only)
+    return function(array, searchString){
+        if (!searchString){
+            return array;
+        }
+        var result = [];
+        searchString = searchString.toLowerCase();
+        array.forEach(function (element, index, array){
+            var titleSearch = element.title.toLowerCase().indexOf(searchString);
+            var lowerCaseTags = element.tags.join('|').toLowerCase().split('|');
+            var tagSearch = lowerCaseTags.indexOf(searchString);
+            if (titleSearch !== -1 || tagSearch !== -1) {
+                result.push(element);
+            };
+        });
+        return result;
+    };
 });
 
 ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams, $http) {
