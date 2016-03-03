@@ -1,23 +1,27 @@
-<div class="item">
+<div id="title">
+    <br/>
     <h1>Welcome!</h1>
-    <h3>Below are articles about different shoes: </h3>
 </div>
 <div class="item">
-    Looking for a specific article? <br/>
-    <input type="text" ng-model="searchData">
-    <!-- ngChange="updateSearch() -->
-    <br/>
-    <ul>
-    	<!--looks at the index as opposed to content-->
-      <div ng-repeat='obj in posts | searchFor:searchData'>
-        <li>
-          <a href="#/pages/{{obj.url}}">{{obj.title}}</a>
-        </li>
-      </div>
-    </ul>
+  <h3> Articles </h3>
+
+  Looking for a specific article? <br/>
+  <input type="text" ng-model="searchData">
+  <!-- ngChange="updateSearch() -->
+  <br/>
+  	<!--looks at the index as opposed to content-->
+    <div class="container" ng-repeat='obj in posts | searchFor:searchData'>
+      <a href="#/pages/{{obj.url}}">
+        <div  id="articlePreview">
+          <p style="text-align:left; padding-left:3em"> {{obj.title}} </p>
+          <br/>
+          {{obj.body}}
+        </div>
+      </a>
+    </div>
 </div>
 
-<h2> <a href="#/new">Make your own!</a>
+<h2> <a href="#/new">Make your own!</a> </h2>
 
 <!-- <div class = 'container' ng-app="ShoeWikiApp" ng-controller="ShoeWikiController">
   <div id="title">
