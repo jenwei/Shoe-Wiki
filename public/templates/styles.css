@@ -1,6 +1,7 @@
-body {
-  background-color: rgb(27, 228, 198);
-  font-family: Impact, Charcoal, sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+* {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -8,10 +9,6 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-}
-
-#emphasis {
-  text-
 }
 
 #title {
