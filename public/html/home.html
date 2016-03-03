@@ -1,13 +1,12 @@
-<span>
-  <h1>Welcome!</h1>
-  <br/>
-  <div class = "group"> <!-- using group div for animation -->
-    <input type="text" required ng-model="searchData">
-    <span class="bar"></span> <!-- for underline animation -->
+<div>
+    <h1>Welcome!</h1>
+    <h3>Below are articles about different shoes: </h3>
+
+    Looking for a specific article? <br/>
+    <input type="text" ng-model="searchData">
     <!-- ngChange="updateSearch() -->
-    <label>Looking for a specific article?</label>
+    <br/>
   </div>
-  <h4>Below are articles about different shoes: </h4>
   <div class = 'list'>
     <ul>
     	<!--looks at the index as opposed to content-->
@@ -18,9 +17,9 @@
       </div>
     </ul>
   </div>
-</span>
+</div>
 
-<button href="#/new">Add your own!</button>
+<h2> <a href="#/new">Make your own!</a>
 
 <!-- <div class = 'container' ng-app="ShoeWikiApp" ng-controller="ShoeWikiController">
   <div id="title">
