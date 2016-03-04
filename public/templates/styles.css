@@ -30,6 +30,7 @@ color: #000000;
   box-shadow: 1px 2px 1px .5px rgb(77, 77, 77);
   margin: 30px 30px 30px 30px;
   min-width: 250px;
+  padding-left: 25%;
 }
 
 .item {
