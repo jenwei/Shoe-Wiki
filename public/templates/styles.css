@@ -4,10 +4,14 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+body {
+  background-color: hsv(180, 75%, 98%);
+}
+
 .container {
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -15,12 +19,10 @@
   background-color: rgb(167, 244, 225);
   text-align: center;
   vertical-align: middle;
-  width: 400px;
-  height: 50px;
-  box-shadow: 2px 3px 2px 1px rgb(77, 77, 77);
+  width: 70%;
+  height: 15%;
+  box-shadow: 1px 2px 1px .5px rgb(77, 77, 77);
   margin: 30px 30px 30px 30px;
-  width: 60%;
-  height: 10%;
   min-width: 250px;
 }
 
@@ -28,10 +30,20 @@
   background-color: rgb(167, 244, 225);
   text-align: center;
   margin: 30px 30px 30px 30px;
-  width: 60%;
   min-width: 200px;
-  height: 25%;
-  box-shadow: 2px 3px 2px 1px rgb(77, 77, 77);
+  box-shadow: 1px 2px 1px .5px rgb(77, 77, 77);
+}
+
+#articlePreview {
+  background-color: rgba(230, 246, 242, 1);
+  text-align: center;
+  margin: 15px 30px 15px 30px;
+  min-width: 100px;
+  box-shadow: 1px 2px 1px .5px rgb(77, 77, 77);
+
+}
+
+.articlePreview {
 }
 
 #completed {
