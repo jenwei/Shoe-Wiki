@@ -1,6 +1,6 @@
 <div id="title">
     <br/>
-    <h1>Welcome!</h1>
+    <h1>Welcome to Shoe Wiki!</h1>
 </div>
 <div class="item">
   <h3> Articles </h3>
@@ -14,46 +14,12 @@
       <a href="#/pages/{{obj.url}}">
         <div id="articlePreview">
           <p style="text-align:left; padding-left:3em"> {{obj.title}} </p>
-          <br/>
-          {{obj.body}}
+          <p style="text-align:left; padding-left:3em"> {{obj.body}} </p>
         </div>
       </a>
     </div>
 </div>
 
-<h2> <a href="#/new">Make your own!</a> </h2>
-
-<!-- <div class = 'container' ng-app="ShoeWikiApp" ng-controller="ShoeWikiController">
-  <div id="title">
-    <h2> You have <span id='emphasis'> {{tasks.length}} </span> tasks to complete! </h2>
-  </div>
-  <div>
-    <form  ng-submit="add()">
-      <input id='input' type="text" ng-model="task.text">
-    </form>
-  </div>
-  <div class="tasks">
-    <h3> Tasks to complete: </h3>
-      <ul>
-        <li ng-repeat="t in tasks track by $index">
-          <div ng-hide="editorEnabled">
-            {{t.text}}
-            <a href="#" ng-click="editorEnabled=!editorEnabled">Edit title</a>
-            <a href="#" ng-click="complete()">X</a>
-          </div>
-          <div ng-show="editorEnabled">
-            <input ng-model="t.text">
-            <a href="#" ng-click="editorEnabled=!editorEnabled; edit()">Done editing?</a>
-          </div>
-      </ul>
-  </div>
-  <div class='tasks'>
-    <h3> Completed Tasks: </h3>
-      <ul id="completed">
-        <li ng-repeat="t in completed track by $index">
-            {{t.text}}
-        </li>
-      </ul>
-  </div>
-</div>
- -->
+<span>
+  <a style="text-align: center" class="button" href="#/new">Make your own!</a>
+</span>

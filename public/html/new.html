@@ -2,17 +2,18 @@
 
 <div>
   <form id="new" ng-submit="new() ">
-    Title: <input id="newTitle" type="text" ng-model="newPost.title"> <br/>
-    Custom URL: <input id="newUrl" type="text" ng-model="newPost.url" value="/">
+    <label>Title: </label><textarea id="newTitle" type="text" ng-model="newPost.title"/> <br/>
+    <label> Custom URL: </label><textarea id="newUrl" type="text" ng-model="newPost.url" value="/"/>
     <br/>
-    Description: <textarea cols="20" rows="5" id="newBody" type="text" ng-model="newPost.body"/>
+    <label>Description: </label><textarea id="newBody" type="text" ng-model="newPost.body"/>
     </br>
-    Author: <input id="newAuthor" type="text" ng-model="newPost.author"> <br/>
-    Tags: <input id="newTags" type="text" ng-model="newPost.tags" placeholder="Separate by spaces">
+    <label>Author: </label><textarea id="newAuthor" type="text" ng-model="newPost.author"/> <br/>
+    <label>Tags: </label><textarea id="newTags" type="text" ng-model="newPost.tags" placeholder="Separate by spaces"/>
+    </br>
+    </br>
     <input type="submit" value="Create">
+    <a class="button" href="#/"> Return home </a>
   </form>
 <div>
-
   {{newPost}}
-
-<a href="#/"> Return home </a>
+<br/>
