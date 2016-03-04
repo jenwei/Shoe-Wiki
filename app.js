@@ -49,6 +49,7 @@
     app.post('/api/delete/:url', routes.pageDel);  // A post request that deletes an article
 
     // listen (start app with node server.js) ======================================
-    app.listen(process.env.PORT || 3000, function() {
-        console.log("App listening on ", http.address().port);
+    var port = process.env.PORT || 3000;
+    app.listen(port, function() {
+        console.log("App listening on ", port);
     });
