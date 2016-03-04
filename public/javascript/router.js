@@ -16,7 +16,7 @@ var ShoeWiki = angular.module('ShoeWikiApp', ['ngRoute'])
 //   })
 
 ShoeWiki.config(function($routeProvider) {
-	console.log("using angular");
+	console.log("Configuring Shoe Wiki");
 	$routeProvider
 		.when('/', {
 			templateUrl: '/html/home.html',
