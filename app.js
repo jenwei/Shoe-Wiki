@@ -1,4 +1,8 @@
-// server.js
+/* 
+app.js is where we define all the modules and exports we need, config mongoose, set up routes, and start the server.
+
+Most of the get requests are now processed client-side.
+*/
 
     // set up ========================
     var express  = require('express');
@@ -8,7 +12,7 @@
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
     var taskModel = require("./models/postSchema.js");
-    //var privdata = require("./config.js"); // config file with db info (used .gitignore so it wouldn't be)
+    // var privdata = require("./config.js"); // config file with db info (used .gitignore so it wouldn't be)
     var routes = require("./routes/index.js");
     var exphbs = require('express-handlebars');
     var path = require('path');
@@ -35,12 +39,6 @@
 
     // // routes =========================
     app.get('/api/posts', routes.home);  // List of all shoe articles and search bar
-
-    // clientside app.get('/api/pages/:subj', routes.pageDisp);  // :task_id // A specific shoe article specified by the url after pages/
-
-    // clientside app.get('/api/pages/del', routes.delDisp);  // A page listing posts and an option to delete them
-
-    // clientside app.get('/api/search/:tags', routes.searchDisp);  // A list of shoe articles that have a specific tag or tags
 
     app.post('/api/pages', routes.pageEdit);  // A post request that edits the page specified
 

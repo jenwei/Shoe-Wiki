@@ -12,11 +12,11 @@ Our wiki has the following functionalities:
 - [x] List of pages
 - [x] Ability to submit new pages
 - [x] Ability to edit page
-- [ ] Documentation for major components (headers for each file with short descriptions - a few sentences)
+- [x] Documentation for major components (headers for each file with short descriptions - a few sentences)
 - [ ] Formatting
-- [ ] Search bar (Special feature!)
-- [ ] Tags (Special feature #2 - if we have time)
-- [ ] Post to Heroku
+- [x] Search bar (Special feature!)
+- [x] Tags/Ability to search by tag (Special feature #2 - if we have time) 
+- [x] Post to Heroku
 
 Progress so far:
 - [x] Set up 'Post' schema

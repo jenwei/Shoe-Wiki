@@ -1,8 +1,10 @@
 /*
-    index.js as a router which allows app.js to perform different
+index.js is a router which allows app.js to perform different
 functions based on the get/post requests that it receives.
-*/
 
+The functionalities we've implemented include displaying all posts, searching (via title or tag),
+page editing, page creation, and page deletion.
+*/
 
 var mongoose = require('mongoose');
 var Post = require('../models/postSchema.js');
@@ -86,65 +88,4 @@ routes.pageDel = function(req, res) {
   });
 };
 
-
 module.exports = routes;
-
-/*
-
-!! Archives !!
- **Used to edit a specified object.**
-     console.log(req.params);
-     console.log(req.body.text);
-     taskModel.update({
-       _id: req.params.task_id
-     }, {
-       text: req.body.text
-     }, function(err, task) {
-       if (err) {res.send(err)};
-       taskModel.find(function(err, tasks) {
-         if (err) {res.send(err)};
-         res.json(tasks);
-       });
-     });
-   });
-
-**Also used to edit a specific object using an ID.**
-   taskModel.update({
-     _id: req.params.task_id
-   }, {
-     completed: true
-   }, function(err, task) {
-     if (err) {res.send(err)};
-     taskModel.find(function(err, tasks) {
-       if (err) {res.send(err)};
-       res.json(tasks);
-     });
-   });
- });
-
-**Create a new document**
- console.log("this", req.body);
- taskModel.create({
-     text : req.body.text,
-     completed : false
- }, function(err, todo) {
-     if (err)
-         res.send(err);
-     taskModel.find(function(err, tasks) {
-         if (err)
-             res.send(err);
-         res.json(tasks);
-     });
- });
- // res.end(".")
-});
-
-**Find all documents**
-taskModel.find(function(err, tasks) {
-  if (err)
-    res.send(err);
-  res.json(tasks);
-});
-});
-
-*/

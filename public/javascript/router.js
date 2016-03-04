@@ -1,5 +1,9 @@
 /*
-angular routes
+router.js contains angular routes for the controllers of main, page, new, search, and delete.
+
+config sets up the routing from template to controller.
+
+A 'searchBy' function was added to aid the search controller in filtering for a particular search.
 */
 
 var ShoeWiki = angular.module('ShoeWikiApp', ['ngRoute'])
