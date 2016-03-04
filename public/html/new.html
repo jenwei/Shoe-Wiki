@@ -1,14 +1,14 @@
-<h2> Create a new Page </h2>
+<h2> Create a new page </h2>
 
 <div>
   <form id="new" ng-submit="new() ">
-    Title :<input id="newTitle" type="text" ng-model="newPost.title">
-    Custom URL :<input id="newUrl" type="text" ng-model="newPost.url" value="/">
+    Title: <input id="newTitle" type="text" ng-model="newPost.title"> <br/>
+    Custom URL: <input id="newUrl" type="text" ng-model="newPost.url" value="/">
     <br/>
-    <input id="newBody" type="text" ng-model="newPost.body">
+    Description: <textarea cols="20" rows="5" id="newBody" type="text" ng-model="newPost.body"/>
     </br>
-    Author :<input id="newAuthor" type="text" ng-model="newPost.author">
-    Tags :<input id="newTags" type="text" ng-model="newPost.tags" placeholder="Separate by spaces">
+    Author: <input id="newAuthor" type="text" ng-model="newPost.author"> <br/>
+    Tags: <input id="newTags" type="text" ng-model="newPost.tags" placeholder="Separate by spaces">
     <input type="submit" value="Create">
   </form>
 <div>
