@@ -8,7 +8,7 @@
     var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
     var taskModel = require("./models/postSchema.js");
-    var privdata = require("./config.js"); // config file with db info (used .gitignore so it wouldn't be)
+    //var privdata = require("./config.js"); // config file with db info (used .gitignore so it wouldn't be)
     var routes = require("./routes/index.js");
     var exphbs = require('express-handlebars');
     var path = require('path');
@@ -17,8 +17,8 @@
 
 
     // configuration =================
-    mongoose.connect(privdata.mongodburl);     // connect to mongoDB database on localhost
-    // mongoose.connect('mongodb://localhost/test');
+    //mongoose.connect(privdata.mongodburl);     // connect to mongoDB database on localhost
+    mongoose.connect(process.ENV.MONGOLAB_URI);
 
 
     // app.engine('handlebars', exphbs ({defaultLayout: 'main', extname: '.handlebars'}));
