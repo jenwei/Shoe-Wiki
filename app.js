@@ -18,7 +18,7 @@
 
     // configuration =================
     //mongoose.connect(privdata.mongodburl);     // connect to mongoDB database on localhost
-    mongoose.connect(process.ENV.MONGOLAB_URI);
+    mongoose.connect(process.env.MONGOLAB_URI);
 
 
     // app.engine('handlebars', exphbs ({defaultLayout: 'main', extname: '.handlebars'}));
