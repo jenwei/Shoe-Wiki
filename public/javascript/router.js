@@ -10,13 +10,8 @@ var ShoeWiki = angular.module('ShoeWikiApp', ['ngRoute'])
 	.run(function($rootScope) {
 	});
 
-// angular.module('ShoeWikiApp', [])
-//   .controller('ShoeWikiController', function($scope, $http){
-//   	$scope.shoes = []
-//   })
-
 ShoeWiki.config(function($routeProvider) {
-	console.log("Configuring Shoe Wiki");
+	// Nice use of the route provider!
 	$routeProvider
 		.when('/', {
 			templateUrl: '/html/home.html',
@@ -45,7 +40,6 @@ ShoeWiki.controller('mainController', function($scope, $rootScope, $http) {
     $http.get('/api/posts')
 	    .success(function(data) {
 	    	$rootScope.posts = data;
-				// 		console.log($scope.posts);
 		})
 		.error(function(data) {
 		    console.log('Error: ' + data);
@@ -62,7 +56,7 @@ ShoeWiki.filter("searchFor", function(){
         searchString = searchString.toLowerCase();
         array.forEach(function (element, index, array){
             var titleSearch = element.title.toLowerCase().indexOf(searchString);
-            var lowerCaseTags = element.tags.join('|').toLowerCase().split('|');
+            var lowerCaseTags = element.tags.join('|').toLowerCase().split('|'); // clever :) I'm borrowing this!
             var tagSearch = lowerCaseTags.indexOf(searchString);
             if (titleSearch !== -1 || tagSearch !== -1) {
                 result.push(element);
@@ -103,10 +97,12 @@ ShoeWiki.controller('pageController', function($scope, $rootScope, $routeParams,
 
 		$scope.autofiller = function() {
 			// fills editedPost with post content
-			$scope.editedPost = {};
-			$scope.editedPost.title = $scope.post.title;
-			$scope.editedPost.body = $scope.post.body;
-			$scope.editedPost.author = $scope.post.author;
+			// can also create object inline, like this:
+			$scope.editedPost = {
+				title: $scope.post.title,
+				body: $scope.post.body,
+				author: $scope.post.author
+			};
 		}
 
 });
@@ -145,78 +141,3 @@ ShoeWiki.controller('deleteController', function($scope, $rootScope, $http) {
 		});
 	}
 });
-
-// angular.module('ShoeWikiApp', [])
-//    .controller('ShoeWikiController', function($scope, $http) {
-//      $scope.tasks = [];
-//      $scope.completed = [];
-//      $scope.taskobjs = [];
-//      console.log("in the controller");
-//      $http.get('/api/tasks')
-//         .success(function(data) {
-//             data.forEach(function(element, index, array) {
-//               console.log(element);
-//               if (element.completed) {
-//                 $scope.completed.push(element);
-//               } else {
-//                 $scope.tasks.push(element);
-//               };
-//             });
-//             console.log($scope.tasks);
-//         })
-//         .error(function(data) {
-//             console.log('Error: ' + data);
-//         });
-
-//      $scope.add = function() {
-//       $scope.tasks.push($scope.task)
-//       console.log($scope.task);
-
-//       $http.post('/api/tasks', $scope.task)
-//             .success(function(data) {
-//                 $scope.task = {}; // clear the form so our user is ready to enter another
-//                 $scope.tasks = [];
-//                 $scope.completed = [];
-//                 console.log(data);
-//                 data.forEach(function(element, index, array) {
-//                   if (element.completed) {
-//                     $scope.completed.push(element);
-//                   } else {
-//                     $scope.tasks.push(element);
-//                   };
-//                 })
-//             })
-//             .error(function(data) {
-//                 console.log('Error: ' + data);
-//             });
-//        };
-
-//      $scope.complete = function() {
-//       remov = $scope.tasks.splice(this.$index, 1);
-//       console.log(remov);
-//       $scope.completed.push(remov[0])
-
-//       $http.delete('/api/tasks/' + remov[0]._id)
-//             .success(function(data) {
-//                 $scope.todos = data;
-//                 console.log(data);
-//             })
-//             .error(function(data) {
-//                 console.log('Error: ' + data);
-//             });
-//      };
-
-//      $scope.edit = function() {
-//       edit = $scope.tasks[this.$index];
-//       console.log(edit);
-
-//       $http.post('/api/tasks/' + edit._id, edit)
-//             .success(function(data) {
-//                 console.log(data);
-//             })
-//             .error(function(data) {
-//                 console.log('Error: ' + data);
-//             });
-//      };
-
-// });

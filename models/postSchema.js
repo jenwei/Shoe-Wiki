@@ -6,7 +6,7 @@ var postSchema = mongoose.Schema({
   body: String,
   timestamp: Date,
   author: String,
-  imagesource: String,
+  imagesource: String, // did images end up happening? completely ok if not! but good to go back and clean up
   tags: Array
 })
 
