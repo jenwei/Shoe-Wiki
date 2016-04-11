@@ -6,36 +6,27 @@ The functionalities we've implemented include displaying all posts, searching (v
 page editing, page creation, and page deletion.
 */
 
-var mongoose = require('mongoose');
+// you don't actually need mongoose in this file -- the variable "mongoose" never shows up. The model is enough
 var Post = require('../models/postSchema.js');
 var routes = {};
 
-function errorHandler(err, req, res, next) {
+function errorHandler(err, req, res, next) { // nice abstraction :)
   res.status(500);
   res.render('err',{error: err})
 }
 
 routes.home = function(req, res) {
-  console.log("at home");
+  // clean up debugging mechanisms before pushing!
   Post.find({}, function(err, posts) {
-    if (err) {errorHandler()};
-    // console.log(posts);
+    if (err) {errorHandler(err, req, res)}; // error handler takes params, yes? (throughout)
     res.json(posts);
   });
-  };
+};
 
-// routes.pageDisp = function(req, res) {
-//   var subj = req.params.subj;
-//   // console.log(subj);
-//   Post.findOne({"url":subj}, function(err, post) {
-//     if (err) {errorHandler()};
-//     res.render("pageDisp",{post:post});
-//   });
-// };
+// clean up dead code & old comments before pushing!
 
-routes.searchDisp = function(req, res) {
+routes.searchDisp = function(req, res) { // I tend not to use "nicknames" for variables -- e.g. here I have to stop and think about what "disp" means
   var tags = req.params.tags.split
-  console.log(tags);
   Post.find({"tags": {$all: tags}}, function(err, resultPosts) {
     res.render("searchDisp", resultPosts);
   });
@@ -60,9 +51,6 @@ routes.pageEdit = function(req, res) {
 };
 
 routes.pageNew = function(req, res) {
-  // var subj = req.params.subj;
-  // console.log(subj);
-  console.log("making new page called ", req.body.title);
   Post.create({
     url: req.body.url,
     timestamp: Date(),
@@ -79,7 +67,6 @@ routes.pageNew = function(req, res) {
 
 routes.pageDel = function(req, res) {
   var url = req.params.url;
-  console.log(url);
   Post.findOneAndRemove({"url":url}, function(err, deletedPost) {
     if (err) {errorHandler()};
     Post.find({}, function(err, posts) {

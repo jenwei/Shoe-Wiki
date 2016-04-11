@@ -1,4 +1,4 @@
-/* 
+/*
 app.js is where we define all the modules and exports we need, config mongoose, set up routes, and start the server.
 
 Most of the get requests are now processed client-side.
@@ -22,7 +22,7 @@ Most of the get requests are now processed client-side.
 
     // configuration =================
     //mongoose.connect(privdata.mongodburl);     // connect to mongoDB database on localhost
-    mongoose.connect(process.env.MONGOLAB_URI);
+    mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test'); // putting this here so I can run locally!
 
 
     // app.engine('handlebars', exphbs ({defaultLayout: 'main', extname: '.handlebars'}));
